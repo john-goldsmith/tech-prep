@@ -1,55 +1,68 @@
 # Tech Prep
 A collection of helpful programming topics and links
 
-## HTML5
-- ID vs. class
+## Frontend
 
-## CSS3
+### HTML5
 - ID vs. class
+- Define semantic HTML
 
-## JavaScript
+### CSS3
+- ID vs. class
+- Flexbox
+- Define sematic CSS
+
+### JavaScript
 - = vs. == vs. === (assignment vs. comparison operator)
 - undefined vs. null
 - Define closure
 - How does a session cookie work in an authentication scenario?
-- HTTP verbs (GET, POST, PUT, PATCH, DELETE)
 - RESTful API (JSON vs. XML)
-- SQL: inner join vs. outer join
 - Node
 - RequireJS (AMD vs. CJS)
 - Grunt vs. Gulp
 
-### Angular
+#### Angular
 - Modules
 - Directives
 - Factories
 - Karma
 
-### Ember
+#### Ember
 
-### Backbone
+#### Backbone
 
-## Ruby
+## Backend
+
+## SQL
+- Inner vs. outer join
+
+### HTTP
+- HTTP verbs (GET, POST, PUT, PATCH, DELETE)
+- Code families (200s, 300s, 400s, 500s)
+
+### OOP
 - [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
 
-## Rails
+### Ruby
+
+### Rails
 - Concerns
 
-## PHP
+### PHP
 - PDO
-
-## Security
-- XSRF
-- XSS
-- SQL injection
-
-## Performance & Optimizations
 
 ## Misc
 - Linux Epoch
 - Regex
-HTTP verbs, families (200, 300, 400, 500)
 - Vim
+
+### Security
+- XSRF
+- XSS
+- SQL injection
+
+### Performance & Optimizations
 
 ## Books
 - [The Pragmatic Programmer](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&qid=1416289440&sr=8-1&keywords=pragmatic+programmer) by Andrew Hunt
