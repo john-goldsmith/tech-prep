@@ -15,18 +15,24 @@ A collection of helpful programming topics and links
     * [Backbone](#backbone)
 * [Backend](#backend)
   * [SQL](#sql)
+    * [JOINs](#joins)
   * [HTTP & REST](#http-rest)
     * [Verbs](#verbs)
     * [Status Codes](#status-codes)
     * [Resources](#resources)
   * [OOP](#oop)
+    * [Resources](#resources)
   * [Ruby](#ruby)
     * [Rails](#rails)
   * [PHP](#php)
+  * [Java](#java)
+    * [Resources](#resources)
 * [Misc](#misc)
   * [Unix Epoch](#unix-epoch)
   * [Regex](#regex)
   * [Sessions](#sessions)
+    * [Description](#description)
+    * [Resources](#resources)
   * [Security](#security)
     * [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf-xsrf)
     * [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
@@ -37,7 +43,6 @@ A collection of helpful programming topics and links
 * [Books](#books)
 
 <!-- toc stop -->
-
 
 ## Frontend
 
@@ -63,20 +68,135 @@ A collection of helpful programming topics and links
 
 ##### Description
 
+---
+
 ### CSS3
 - ID vs. class
 - Flexbox
 - Define sematic CSS
+- Media Queries
+- (r)em vs. px vs. %
+
+---
 
 ### JavaScript
-- = vs. == vs. === (assignment vs. comparison operator)
-- undefined vs. null
-- Define closure
-- How does a session cookie work in an authentication scenario?
-- RESTful API (JSON vs. XML)
+JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
+
+#### Undefined vs. null
+For example, when declaring `var foo;`, the variable `foo` will be `undefined` because it is not yet initialized. `null`, however, is an object. Examples:
+
+```
+var foo (= undefined);
+foo == null;        // true
+foo === null;       // false
+foo == undefined;   // true
+foo === undefined;  // true
+typeof foo;         // undefined
+
+var foo = null;
+foo == null;        // true
+foo === null;       // true
+foo == undefined;   // true
+foo === undefined;  // false
+typeof foo;         // object
+```
+
+#### Assignment & Comparison Operators
+- A single equal (`=`) is an assignment operator. It assigns a value to a variables. For example, `var foo = "foo";`.
+- Double equals (`==`) is a "weak" comparison operator that performs type coercion.
+- Triple equals (`===`) is a strict comparison operator that will check for type and value.
+
+| Condition                | `==`    | `===`
+|--------------------------|---------|------
+| `"1" -> 1`               | `true`  | `false`
+| `"" -> 0`                | `true`  | `false`
+| `"" -> false`            | `true`  | `false`
+| `"" -> null`             | `false` | `false`
+| `"" -> undefined`        | `false` | `false`
+| `"true" -> true`         | `false` | `false`
+| `null -> null`           | `true`  | `true`
+| `undefined -> undefined` | `true`  | `true`
+| `null -> undefined`      | `true`  | `false`
+| `false -> undefined`     | `false` | `false`
+| `false -> null`          | `false` | `false`
+
+#### Types
+| Expression            | Value
+|-----------------------|------
+| `typeof true`         | `"boolean"`
+| `typeof 1`            | `"number"`
+| `typeof NaN`          | `"number"`
+| `typeof Infinity`     | `"number"`
+| `typeof "true"`       | `"string"`
+| `typeof function(){}` | `"function"`
+| `typeof undefined`    | `"undefined"`
+| `typeof {}`           | `"object"`
+| `typeof []`           | `"object"`
+| `typeof null`         | `"object"`
+| `typeof new Date()`   | `"object"`
+
+#### Self-executing Functions
+```
+(function(){
+  //...
+})();
+```
+
+#### Closures
+Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created. A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created.
+
+##### Example
+```
+var makeCounter = function () {
+  var _counter = 0;
+
+  return {
+    increment: function (amount) {
+      _counter = _counter + amount;
+      return _counter;
+    },
+    decrement: function (amount) {
+      _counter = _counter - amount;
+      return _counter;
+    },
+    getCounter: function () {
+      return _counter;
+    }
+  }
+}
+```
+
+##### Resources
+- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures)
+
+#### OOP
+Redefining the prototype via `MyObject.prototype = {};` is not recommended so, instead, append to the existing prototype via `MyObject.prototype.foo = function(){};`.
+
+##### Classes
+```
+var Person = function () {
+
+}
+```
+
+##### Instances
+```
+var person1 = new Person();
+```
+
+##### Namespaces
+Create a **single** global variable (usually an object `{}`) that houses all other application code. For example, `var MyApp = MyApp || {};`. From here, sub-namespaces can be created via `MyApp.store = {};`.
+
+##### Resources
+- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+
 - Node
+
+#### Dependency Injection
 - RequireJS (AMD vs. CJS)
-- Grunt vs. Gulp
+
+#### Grunt vs. Gulp
+Grunt is "configuration over code" whereas Gulp is "code over configuration". Gulp is stream-based. The Gulp API consists of `task`, `watch`, `src`, `pipe`, and `dest`.
 
 #### Angular
 - Modules
@@ -92,26 +212,86 @@ A collection of helpful programming topics and links
 
 ### SQL
 
-- Inner vs. outer join
+#### JOINs
 
+##### Description
+An **inner join** of A and B gives the result of A intersect B.
+An **outer join** of A and B gives the results of A union B.
+
+##### Examples
+See [http://sqlfiddle.com/#!2/0d1c7/12](http://sqlfiddle.com/#!2/0d1c7/12)
+
+Given this schema:
+
+| TableA | TableB
+|--------|-------
+| 1      | 3
+| 2      | 4
+| 3      | 5
+| 4      | 6
+
+> Note that (1,2) are unique to TableA, (3,4) are common to both TableA and TableB, and (5,6) are unique to TableB
+
+###### Inner Join
+Gives the intersection of two tables.
+
+`SELECT * FROM TableA INNER JOIN TableB ON TableA.a = TableB.b`
+
+| a | b
+|---|---
+| 3 | 3
+| 4 | 4
+
+###### Left Outer Join
+Gives all the rows of the "left" table, plus any common rows from the other table.
+
+`SELECT * FROM TableA LEFT OUTER JOIN TableB ON TableA.a = TableB.b`
+
+| a | b
+|---|---
+| 1 | null
+| 2 | null
+| 3 | 3
+| 4 | 4
+
+
+###### Full Outer Join
+Gives the union of two tables (all the rows from both tables)
+
+`SELECT * FROM TableA FULL OUTER JOIN TableB ON TableA.a = TableB.b`
+
+| a    | b
+|------|---
+| 1    | null
+| 2    | null
+| 3    | 3
+| 4    | 4
+| null | 5
+| null | 6
+
+![SQL Joins](http://i.stack.imgur.com/1UKp7.png)
+
+##### Resources
 - [http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins](http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins)
+
+---
 
 ### HTTP & REST
 
 #### Verbs
 
 | Verb     | Description
------------|--------
-| `GET`    | Used to retrieve / read (not change) a resource
+|----------|------------
+| `GET`    | Used to retrieve / read (not change) a resource (idempotent)
 | `POST`   | Used to create new resources
-| `PUT`    | Used to update a **complete** resource
-| `PATCH`  | Used to update a **partial** resource
-| `DELETE` | Used to delete a resource
+| `PUT`    | Used to update a **complete** resource (idempotent)
+| `PATCH`  | Used to update a **partial** resource (idempotent)
+| `DELETE` | Used to delete a resource (idempotent)
 
 #### Status Codes
 
 | Status Code | Description
---------------|------------
+|-------------|------------
 | 2xx         | Success
 | 3xx         | Redirection
 | 4xx         | Client error
@@ -122,17 +302,42 @@ A collection of helpful programming topics and links
 - [http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions](http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions)
 - [http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 
+---
+
 ### OOP
+
+#### Core Principles
+- **Abstraction** is used to manage complexity by decomposing complex systems into smaller components. It is the essential characteristics of an object that distinguish it from all other kinds of objects.
+- **Encapsulation** is the hiding of data implementation by restricting access to accessors (get) and mutators (set).
+- **Inheritance** describes the relationships between objects.
+- **Polymorphism** means being able to send the same message to different objects and get different results (one name, many forms).
+
+#### Single Table Inheritance (STI)
+STI is the idea of using a single table to reflect multiple models that inherit from a base model.
+
+#### Resources
+- [Polymorphism in Ruby](http://robots.thoughtbot.com/back-to-basics-polymorphism-and-ruby)
 - [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
 - [Sandi Metz - SOLID Object-Oriented Design](http://vimeo.com/12350535)
+
+---
 
 ### Ruby
 
 #### Rails
 - Concerns
 
+---
+
 ### PHP
 - PDO
+
+---
+
+### Java
+
+#### Resources
+- [https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html)
 
 ## Misc
 
@@ -140,6 +345,11 @@ A collection of helpful programming topics and links
 An instant in time chosen as the origin of a particular era. The "epoch" then serves as a reference point from which time is measured. Time measurement units are counted from the epoch so that the date and time of events can be specified unambiguously.
 
 January 1, 1970
+
+### Duck Typing
+Duck typing is only concerned with ensuring that objects behave as demanded of them in a given context, rather than ensuring that they are of a specific type. Instead of specifying types formally, duck typing practices rely on documentation, clear code, and testing to ensure correct use
+
+---
 
 ### Regex
 
@@ -170,11 +380,18 @@ January 1, 1970
 | `a{3,}`    | 3 or more of a
 | `a{3,6}`   | Between 3 and 6 of a
 
+---
+
 ### Sessions
+
+#### Description
 HTTP is a stateless protocol. Sessions make it stateful.
 
-See [http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/](http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/)
-See [http://guides.rubyonrails.org/security.html#sessions](http://guides.rubyonrails.org/security.html#sessions)
+#### Resources
+- [http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/](http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/)
+- [http://guides.rubyonrails.org/security.html#sessions](http://guides.rubyonrails.org/security.html#sessions)
+
+---
 
 ### Security
 
@@ -244,11 +461,15 @@ SELECT * FROM projects WHERE name = '' OR 1 --'
 ##### Description
 An attempt to make a machine or network resource unavailable to its intended users.
 
+---
+
 ### Performance & Optimizations
 - Concatentation
 - Minificiation
 - Reduce number of HTTP requests
 - Image sprites
+
+---
 
 ## Books
 - [The Pragmatic Programmer](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&qid=1416289440&sr=8-1&keywords=pragmatic+programmer) by Andrew Hunt
