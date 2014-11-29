@@ -1,6 +1,8 @@
 # Tech Prep
 A collection of helpful programming topics and links
 
+
+
 <!-- toc -->
 
 * [Frontend](#frontend)
@@ -10,6 +12,14 @@ A collection of helpful programming topics and links
     * [Semantic HTML](#semantic-html)
   * [CSS3](#css3)
   * [JavaScript](#javascript)
+    * [Undefined vs. null](#undefined-vs-null)
+    * [Assignment & Comparison Operators](#assignment-comparison-operators)
+    * [Types](#types)
+    * [Self-executing Functions](#self-executing-functions)
+    * [Closures](#closures)
+    * [OOP](#oop)
+    * [Dependency Injection](#dependency-injection)
+    * [Grunt vs. Gulp](#grunt-vs-gulp)
     * [Angular](#angular)
     * [Ember](#ember)
     * [Backbone](#backbone)
@@ -21,6 +31,8 @@ A collection of helpful programming topics and links
     * [Status Codes](#status-codes)
     * [Resources](#resources)
   * [OOP](#oop)
+    * [Core Principles](#core-principles)
+    * [Single Table Inheritance (STI)](#single-table-inheritance-sti)
     * [Resources](#resources)
   * [Ruby](#ruby)
     * [Rails](#rails)
@@ -29,6 +41,7 @@ A collection of helpful programming topics and links
     * [Resources](#resources)
 * [Misc](#misc)
   * [Unix Epoch](#unix-epoch)
+  * [Duck Typing](#duck-typing)
   * [Regex](#regex)
   * [Sessions](#sessions)
     * [Description](#description)
@@ -43,6 +56,7 @@ A collection of helpful programming topics and links
 * [Books](#books)
 
 <!-- toc stop -->
+
 
 ## Frontend
 
