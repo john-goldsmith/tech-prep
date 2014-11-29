@@ -1,6 +1,44 @@
 # Tech Prep
 A collection of helpful programming topics and links
 
+<!-- toc -->
+
+* [Frontend](#frontend)
+  * [HTML5](#html5)
+    * [ID Attribute](#id-attribute)
+    * [Class Attribute](#class-attribute)
+    * [Semantic HTML](#semantic-html)
+  * [CSS3](#css3)
+  * [JavaScript](#javascript)
+    * [Angular](#angular)
+    * [Ember](#ember)
+    * [Backbone](#backbone)
+* [Backend](#backend)
+  * [SQL](#sql)
+  * [HTTP & REST](#http-rest)
+    * [Verbs](#verbs)
+    * [Status Codes](#status-codes)
+    * [Resources](#resources)
+  * [OOP](#oop)
+  * [Ruby](#ruby)
+    * [Rails](#rails)
+  * [PHP](#php)
+* [Misc](#misc)
+  * [Unix Epoch](#unix-epoch)
+  * [Regex](#regex)
+  * [Sessions](#sessions)
+  * [Security](#security)
+    * [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf-xsrf)
+    * [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
+    * [CSS Injection](#css-injection)
+    * [SQL Injection](#sql-injection)
+    * [Denial of Service (DoS)](#denial-of-service-dos)
+  * [Performance & Optimizations](#performance-optimizations)
+* [Books](#books)
+
+<!-- toc stop -->
+
+
 ## Frontend
 
 ### HTML5
