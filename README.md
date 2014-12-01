@@ -1,61 +1,94 @@
 # Tech Prep
 A collection of helpful programming topics and links
 
+<!-- MarkdownTOC depth=0 autolink=true bracket=round -->
 
+- [Frontend](#frontend)
+  - [HTML5](#html5)
+    - [ID Attribute](#id-attribute)
+      - [Description](#description)
+      - [Example](#example)
+    - [Class Attribute](#class-attribute)
+      - [Description](#description-1)
+      - [Example](#example-1)
+    - [Semantic HTML](#semantic-html)
+      - [Description](#description-2)
+  - [CSS3](#css3)
+  - [JavaScript](#javascript)
+    - [Function Expression vs. Declaration](#function-expression-vs-declaration)
+    - [call() vs. apply()](#call-vs-apply)
+    - [Undefined vs. null](#undefined-vs-null)
+    - [Assignment & Comparison Operators](#assignment--comparison-operators)
+    - [Types](#types)
+    - [Self-executing Functions](#self-executing-functions)
+    - [Closures](#closures)
+      - [Example](#example-2)
+      - [Resources](#resources)
+    - [OOP](#oop)
+      - [Namespaces](#namespaces)
+      - [Resources](#resources-1)
+    - [Node](#node)
+    - [Dependency Injection](#dependency-injection)
+    - [Grunt vs. Gulp](#grunt-vs-gulp)
+    - [Angular](#angular)
+    - [Ember](#ember)
+    - [Backbone](#backbone)
+- [Backend](#backend)
+  - [SQL](#sql)
+    - [JOINs](#joins)
+      - [Description](#description-3)
+      - [Examples](#examples)
+        - [Inner Join](#inner-join)
+        - [Left Outer Join](#left-outer-join)
+        - [Full Outer Join](#full-outer-join)
+      - [Resources](#resources-2)
+  - [HTTP & REST](#http--rest)
+    - [Verbs](#verbs)
+    - [Status Codes](#status-codes)
+    - [Resources](#resources-3)
+  - [OOP](#oop-1)
+    - [Core Principles](#core-principles)
+    - [Single Table Inheritance (STI)](#single-table-inheritance-sti)
+    - [Resources](#resources-4)
+  - [Ruby](#ruby)
+    - [Rails](#rails)
+  - [PHP](#php)
+    - [PDO](#pdo)
+    - [Resources](#resources-5)
+  - [Java](#java)
+    - [Resources](#resources-6)
+- [Misc](#misc)
+  - [Unix Epoch](#unix-epoch)
+  - [Duck Typing](#duck-typing)
+  - [Regex](#regex)
+  - [Sessions](#sessions)
+    - [Description](#description-4)
+    - [Resources](#resources-7)
+  - [Security](#security)
+    - [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf--xsrf)
+      - [Description](#description-5)
+      - [Example](#example-3)
+      - [Countermeasures](#countermeasures)
+      - [Resources](#resources-8)
+    - [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
+      - [Description](#description-6)
+      - [Example](#example-4)
+      - [Countermeasures](#countermeasures-1)
+      - [Resources](#resources-9)
+    - [CSS Injection](#css-injection)
+      - [Description](#description-7)
+      - [Example](#example-5)
+      - [Resources](#resources-10)
+    - [SQL Injection](#sql-injection)
+      - [Description](#description-8)
+      - [Example](#example-6)
+      - [Countermeasures](#countermeasures-2)
+    - [Denial of Service (DoS)](#denial-of-service-dos)
+      - [Description](#description-9)
+  - [Performance & Optimizations](#performance--optimizations)
+- [Books](#books)
 
-<!-- toc -->
-
-* [Frontend](#frontend)
-  * [HTML5](#html5)
-    * [ID Attribute](#id-attribute)
-    * [Class Attribute](#class-attribute)
-    * [Semantic HTML](#semantic-html)
-  * [CSS3](#css3)
-  * [JavaScript](#javascript)
-    * [Undefined vs. null](#undefined-vs-null)
-    * [Assignment & Comparison Operators](#assignment-comparison-operators)
-    * [Types](#types)
-    * [Self-executing Functions](#self-executing-functions)
-    * [Closures](#closures)
-    * [OOP](#oop)
-    * [Dependency Injection](#dependency-injection)
-    * [Grunt vs. Gulp](#grunt-vs-gulp)
-    * [Angular](#angular)
-    * [Ember](#ember)
-    * [Backbone](#backbone)
-* [Backend](#backend)
-  * [SQL](#sql)
-    * [JOINs](#joins)
-  * [HTTP & REST](#http-rest)
-    * [Verbs](#verbs)
-    * [Status Codes](#status-codes)
-    * [Resources](#resources)
-  * [OOP](#oop)
-    * [Core Principles](#core-principles)
-    * [Single Table Inheritance (STI)](#single-table-inheritance-sti)
-    * [Resources](#resources)
-  * [Ruby](#ruby)
-    * [Rails](#rails)
-  * [PHP](#php)
-  * [Java](#java)
-    * [Resources](#resources)
-* [Misc](#misc)
-  * [Unix Epoch](#unix-epoch)
-  * [Duck Typing](#duck-typing)
-  * [Regex](#regex)
-  * [Sessions](#sessions)
-    * [Description](#description)
-    * [Resources](#resources)
-  * [Security](#security)
-    * [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf-xsrf)
-    * [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
-    * [CSS Injection](#css-injection)
-    * [SQL Injection](#sql-injection)
-    * [Denial of Service (DoS)](#denial-of-service-dos)
-  * [Performance & Optimizations](#performance-optimizations)
-* [Books](#books)
-
-<!-- toc stop -->
+<!-- /MarkdownTOC -->
 
 
 ## Frontend
@@ -95,6 +128,13 @@ A collection of helpful programming topics and links
 
 ### JavaScript
 JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
+
+#### Function Expression vs. Declaration
+`var foo = function(){}` is a function expression defined at run-time. `function bar(){}` is a function declaration defined at parse-time.
+
+#### call() vs. apply()
+`Func.call(this, arg1, arg2, ...)`
+`Func.apply(this, [arg1, arg2, ...])`
 
 #### Undefined vs. null
 For example, when declaring `var foo;`, the variable `foo` will be `undefined` because it is not yet initialized. `null`, however, is an object. Examples:
@@ -186,15 +226,27 @@ var makeCounter = function () {
 #### OOP
 Redefining the prototype via `MyObject.prototype = {};` is not recommended so, instead, append to the existing prototype via `MyObject.prototype.foo = function(){};`.
 
-##### Classes
 ```
-var Person = function () {
+// Class defintion and constructor
+var Person = function(firstName, lastName){
+
+  // Private class variable
+  var age = 29;
+
+  // Public instance variable
+  this.firstName = firstName;
+  this.lastName = lastName;
+
+  // Private class method
+  var getAge
+
+  // Public instance method
+  this.fullName = function(){
+    return this.firstName + " " + this.lastName
+  }
 
 }
-```
 
-##### Instances
-```
 var person1 = new Person();
 ```
 
@@ -203,8 +255,10 @@ Create a **single** global variable (usually an object `{}`) that houses all oth
 
 ##### Resources
 - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+- [http://javascript.crockford.com/private.html](http://javascript.crockford.com/private.html)
+- [http://javascript.crockford.com/prototypal.html](http://javascript.crockford.com/prototypal.html)
 
-- Node
+#### Node
 
 #### Dependency Injection
 - RequireJS (AMD vs. CJS)
@@ -344,7 +398,12 @@ STI is the idea of using a single table to reflect multiple models that inherit 
 ---
 
 ### PHP
-- PDO
+
+#### PDO
+
+#### Resources
+- [https://phpbestpractices.org/](https://phpbestpractices.org/)
+-[http://www.phptherightway.com/](http://www.phptherightway.com/)
 
 ---
 
