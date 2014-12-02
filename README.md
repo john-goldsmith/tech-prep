@@ -6,13 +6,11 @@ A collection of helpful programming topics and links
 - [Frontend](#frontend)
   - [HTML5](#html5)
     - [ID Attribute](#id-attribute)
-      - [Description](#description)
       - [Example](#example)
     - [Class Attribute](#class-attribute)
-      - [Description](#description-1)
       - [Example](#example-1)
     - [Semantic HTML](#semantic-html)
-      - [Description](#description-2)
+    - [New Elements, Attributes, & APIs](#new-elements-attributes--apis)
   - [CSS3](#css3)
   - [JavaScript](#javascript)
     - [Function Expression vs. Declaration](#function-expression-vs-declaration)
@@ -25,10 +23,16 @@ A collection of helpful programming topics and links
       - [Example](#example-2)
       - [Resources](#resources)
     - [OOP](#oop)
+      - [Classes & Instances](#classes--instances)
+      - [Inheritence & Polymorphism](#inheritence--polymorphism)
       - [Namespaces](#namespaces)
       - [Resources](#resources-1)
     - [Node](#node)
-    - [Dependency Injection](#dependency-injection)
+      - [Resources](#resources-2)
+    - [Modularity](#modularity)
+      - [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
+      - [CommonJS (CJS)](#commonjs-cjs)
+      - [Resources](#resources-3)
     - [Grunt vs. Gulp](#grunt-vs-gulp)
     - [Angular](#angular)
     - [Ember](#ember)
@@ -36,55 +40,48 @@ A collection of helpful programming topics and links
 - [Backend](#backend)
   - [SQL](#sql)
     - [JOINs](#joins)
-      - [Description](#description-3)
       - [Examples](#examples)
         - [Inner Join](#inner-join)
         - [Left Outer Join](#left-outer-join)
         - [Full Outer Join](#full-outer-join)
-      - [Resources](#resources-2)
+      - [Resources](#resources-4)
   - [HTTP & REST](#http--rest)
     - [Verbs](#verbs)
     - [Status Codes](#status-codes)
-    - [Resources](#resources-3)
+    - [Resources](#resources-5)
   - [OOP](#oop-1)
     - [Core Principles](#core-principles)
     - [Single Table Inheritance (STI)](#single-table-inheritance-sti)
-    - [Resources](#resources-4)
+    - [Resources](#resources-6)
   - [Ruby](#ruby)
     - [Rails](#rails)
   - [PHP](#php)
     - [PDO](#pdo)
-    - [Resources](#resources-5)
+    - [Resources](#resources-7)
   - [Java](#java)
-    - [Resources](#resources-6)
+    - [Resources](#resources-8)
 - [Misc](#misc)
   - [Unix Epoch](#unix-epoch)
   - [Duck Typing](#duck-typing)
   - [Regex](#regex)
   - [Sessions](#sessions)
-    - [Description](#description-4)
-    - [Resources](#resources-7)
+    - [Resources](#resources-9)
   - [Security](#security)
     - [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf--xsrf)
-      - [Description](#description-5)
       - [Example](#example-3)
       - [Countermeasures](#countermeasures)
-      - [Resources](#resources-8)
+      - [Resources](#resources-10)
     - [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
-      - [Description](#description-6)
       - [Example](#example-4)
       - [Countermeasures](#countermeasures-1)
-      - [Resources](#resources-9)
+      - [Resources](#resources-11)
     - [CSS Injection](#css-injection)
-      - [Description](#description-7)
       - [Example](#example-5)
-      - [Resources](#resources-10)
+      - [Resources](#resources-12)
     - [SQL Injection](#sql-injection)
-      - [Description](#description-8)
       - [Example](#example-6)
       - [Countermeasures](#countermeasures-2)
     - [Denial of Service (DoS)](#denial-of-service-dos)
-      - [Description](#description-9)
   - [Performance & Optimizations](#performance--optimizations)
 - [Books](#books)
 
@@ -96,24 +93,40 @@ A collection of helpful programming topics and links
 ### HTML5
 
 #### ID Attribute
-
-##### Description
 **The ID attribute provides a document-wide unique identifier for an element.** This is used to identify the element so that stylesheets can alter its presentational properties, and scripts may alter, animate or delete its contents or presentation. Appended to the URL of the page, it provides a globally unique identifier for the element, typically a sub-section of the page.
 
 ##### Example
 `<div id="content"></div>`
 
 #### Class Attribute
-
-##### Description
 **The class attribute provides a way of classifying similar elements.** This can be used for semantic or presentation purposes. Multiple class values may be specified.
 
 ##### Example
 `<div class="notation"></div>`
 
 #### Semantic HTML
+Semantic HTML is the use of HTML markup to **reinforce the meaning of the information in webpages rather than merely to define its presentation**.
 
-##### Description
+#### New Elements, Attributes, & APIs
+- `<article>`
+- `<aside>`
+- `<canvas>`
+- `<details>`
+- `<figcaption>`
+- `<figure>`
+- `<footer>`
+- `<header>`
+- `<main>`
+- `<mark>`
+- `<nav>`
+- `<section>`
+- `<summary>`
+- `<time>`
+- `data-*=""`
+- Canvas
+- Drag-and-drop
+- Browser history management
+- Web storage
 
 ---
 
@@ -122,7 +135,9 @@ A collection of helpful programming topics and links
 - Flexbox
 - Define sematic CSS
 - Media Queries
+- Responsive Web Design (RWD)
 - (r)em vs. px vs. %
+- Special selectors
 
 ---
 
@@ -192,7 +207,7 @@ typeof foo;         // object
 #### Self-executing Functions
 ```
 (function(){
-  //...
+  // ...
 })();
 ```
 
@@ -226,6 +241,7 @@ var makeCounter = function () {
 #### OOP
 Redefining the prototype via `MyObject.prototype = {};` is not recommended so, instead, append to the existing prototype via `MyObject.prototype.foo = function(){};`.
 
+##### Classes & Instances
 ```
 // Class defintion and constructor
 var Person = function(firstName, lastName){
@@ -238,7 +254,9 @@ var Person = function(firstName, lastName){
   this.lastName = lastName;
 
   // Private class method
-  var getAge
+  var getAge = function(){
+    return age;
+  }
 
   // Public instance method
   this.fullName = function(){
@@ -247,11 +265,15 @@ var Person = function(firstName, lastName){
 
 }
 
+// Instantiate a new instance
 var person1 = new Person();
+person1.fullName();
 ```
 
+##### Inheritence & Polymorphism
+
 ##### Namespaces
-Create a **single** global variable (usually an object `{}`) that houses all other application code. For example, `var MyApp = MyApp || {};`. From here, sub-namespaces can be created via `MyApp.store = {};`.
+Create a **single** global variable (usually an object `{}`) that houses all other application code. For example, `var MyApp = MyApp || {};`. From here, sub-namespaces can be created via `MyApp.store = {};`. The downsides of this are that it's still possible to incur naming collisions in your architecture, and there's no clean way to handle dependency management without some manual effort or third party tools.
 
 ##### Resources
 - [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
@@ -259,9 +281,56 @@ Create a **single** global variable (usually an object `{}`) that houses all oth
 - [http://javascript.crockford.com/prototypal.html](http://javascript.crockford.com/prototypal.html)
 
 #### Node
+JavaScript on the server. **Node does I/O in a way that is asynchronous which lets it handle lots of different things simultaneously.** For example, if you go down to a fast food joint and order a cheeseburger they will immediately take your order and then make you wait around until the cheeseburger is ready. In the meantime they can take other orders and start cooking cheeseburgers for other people. Imagine if you had to wait at the register for your cheeseburger, blocking all other people in line from ordering while they cooked your burger! This is called blocking I/O because all I/O (cooking cheeseburgers) happens one at a time. Node, on the other hand, is non-blocking, which means it can cook many cheeseburgers at once.
 
-#### Dependency Injection
-- RequireJS (AMD vs. CJS)
+##### Resources
+- [https://github.com/maxogden/art-of-node](https://github.com/maxogden/art-of-node)
+- [http://nodeschool.io/](http://nodeschool.io/)
+- [https://github.com/rvagg/learnyounode](https://github.com/rvagg/learnyounode)
+
+#### Modularity
+When an application is modular, it generally means it's composed of a set of highly decoupled, distinct pieces of functionality stored in modules. Loose coupling facilitates easier maintainability of apps by removing dependencies where possible. When this is implemented efficiently, it's quite easy to see how changes to one part of a system may affect another.
+
+##### Asynchronous Module Definition (AMD)
+The AMD module format is a proposal for defining modules where both the module and dependencies can be asynchronously loaded. It is significantly cleaner than the present global namespace and `<script>` tag solutions. There's a clean way to declare stand-alone modules and dependencies they may have. Module definitions are encapsulated, helping us to avoid pollution of the global namespace. Browser first.
+
+```
+// Require a module
+require(["dep1", "dep2"], function(dep1, dep2){
+  // ...
+});
+
+// Define a module. Note that the following is a named module. Normally
+// modules should be registered as anonymouse, which allows consumers of
+// the module to rename the library.
+define("myModule", ["dep1, "dep2"], function(dep1, dep2){
+  var myModule = {
+    // ...
+  }
+  return myModule;
+});
+```
+
+##### CommonJS (CJS)
+The CommonJS module proposal specifies a simple API for declaring modules server-side (Node, for example). Some of the arguments against CJS include a note that many CommonJS APIs address server-oriented features which one would simply not be able to implement at a browser-level in JavaScript -- for example, io and system could be considered unimplementable by the nature of their functionality. Server first.
+
+```
+// Require a module
+var foo = require('foo');
+
+function bar() {
+  foo.doStuff();
+}
+
+// Export a module
+exports.bar = bar;
+```
+
+##### Resources
+- [http://addyosmani.com/writing-modular-js/](http://addyosmani.com/writing-modular-js/)
+- [http://requirejs.org/docs/why.html#1](http://requirejs.org/docs/why.html#1)
+- [http://browserify.org/articles.html](http://browserify.org/articles.html)
+- [Browserify v2](http://vimeo.com/62988591)
 
 #### Grunt vs. Gulp
 Grunt is "configuration over code" whereas Gulp is "code over configuration". Gulp is stream-based. The Gulp API consists of `task`, `watch`, `src`, `pipe`, and `dest`.
@@ -281,10 +350,7 @@ Grunt is "configuration over code" whereas Gulp is "code over configuration". Gu
 ### SQL
 
 #### JOINs
-
-##### Description
-An **inner join** of A and B gives the result of A intersect B.
-An **outer join** of A and B gives the results of A union B.
+An **inner join** of A and B gives the result of A intersect B. An **outer join** of A and B gives the results of A union B.
 
 ##### Examples
 See [http://sqlfiddle.com/#!2/0d1c7/12](http://sqlfiddle.com/#!2/0d1c7/12)
@@ -403,7 +469,7 @@ STI is the idea of using a single table to reflect multiple models that inherit 
 
 #### Resources
 - [https://phpbestpractices.org/](https://phpbestpractices.org/)
--[http://www.phptherightway.com/](http://www.phptherightway.com/)
+- [http://www.phptherightway.com/](http://www.phptherightway.com/)
 
 ---
 
@@ -456,8 +522,6 @@ Duck typing is only concerned with ensuring that objects behave as demanded of t
 ---
 
 ### Sessions
-
-#### Description
 HTTP is a stateless protocol. Sessions make it stateful.
 
 #### Resources
@@ -469,8 +533,6 @@ HTTP is a stateless protocol. Sessions make it stateful.
 ### Security
 
 #### Cross-site Request Forgery (CSRF / XSRF)
-
-##### Description
 XSRF attacks works by including a link or script in a page that accesses a site to which the user is known (or is supposed) to have been authenticated. For example, one user, Alice, might be browsing a chat forum where another user, Mallory, has posted a message. Suppose that Mallory has crafted an HTML image element that references an action on Alice's bank's website (rather than an image file). If Alice's bank keeps her authentication information in a cookie, and if the cookie hasn't expired, then the attempt by Alice's browser to load the image will submit the withdrawal form with her cookie, thus authorizing a transaction without Alice's approval.
 
 ##### Example
@@ -484,8 +546,6 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 - [http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf](http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf)
 
 #### Cross-site Scripting (XSS)
-
-##### Description
 **The most common entry points are just about everywhere where the user can input data or any URL parameter. An attacker injects some code, the web application saves it and displays it on a page, later presented to a victim.** XSS can steal the cookie, hijack the session, redirect the victim to a fake website, display advertisements for the benefit of the attacker, change elements on the web site to get confidential information or install malicious software through security holes in the web browser.
 
 ##### Example
@@ -498,8 +558,6 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 - [http://guides.rubyonrails.org/security.html#cross-site-scripting-xss](http://guides.rubyonrails.org/security.html#cross-site-scripting-xss)
 
 #### CSS Injection
-
-##### Description
 **CSS injection is actually JavaScript injection**, because some browsers (IE, some versions of Safari and others) allow JavaScript in CSS. Think twice about allowing custom CSS in your web application.
 
 ##### Example
@@ -509,8 +567,6 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 - [http://guides.rubyonrails.org/security.html#css-injection](http://guides.rubyonrails.org/security.html#css-injection)
 
 #### SQL Injection
-
-##### Description
 SQL injection attacks aim at **influencing database queries by manipulating web application parameters**.
 
 ##### Example
@@ -530,8 +586,6 @@ SELECT * FROM projects WHERE name = '' OR 1 --'
 - Rather than strings, pass an array such as `User.where("login = ? AND password = ?", user_name, password).first`
 
 #### Denial of Service (DoS)
-
-##### Description
 An attempt to make a machine or network resource unavailable to its intended users.
 
 ---
