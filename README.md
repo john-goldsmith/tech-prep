@@ -10,8 +10,14 @@ A collection of helpful programming topics and links
     - [Class Attribute](#class-attribute)
       - [Example](#example-1)
     - [Semantic HTML](#semantic-html)
+      - [Examples](#examples)
     - [New Elements, Attributes, & APIs](#new-elements-attributes--apis)
   - [CSS3](#css3)
+    - [Selectors](#selectors)
+    - [Flexbox](#flexbox)
+    - [Media Queries](#media-queries)
+    - [Responsive Web Design (RWD)](#responsive-web-design-rwd)
+    - [(r)em vs. px vs. %](#rem-vs-px-vs-%)
   - [JavaScript](#javascript)
     - [Function Expression vs. Declaration](#function-expression-vs-declaration)
     - [call() vs. apply()](#call-vs-apply)
@@ -35,12 +41,16 @@ A collection of helpful programming topics and links
       - [Resources](#resources-3)
     - [Grunt vs. Gulp](#grunt-vs-gulp)
     - [Angular](#angular)
+      - [Modules](#modules)
+      - [Directives](#directives)
+      - [Factories](#factories)
     - [Ember](#ember)
     - [Backbone](#backbone)
+    - [Karma](#karma)
 - [Backend](#backend)
   - [SQL](#sql)
     - [JOINs](#joins)
-      - [Examples](#examples)
+      - [Examples](#examples-1)
         - [Inner Join](#inner-join)
         - [Left Outer Join](#left-outer-join)
         - [Full Outer Join](#full-outer-join)
@@ -87,7 +97,6 @@ A collection of helpful programming topics and links
 
 <!-- /MarkdownTOC -->
 
-
 ## Frontend
 
 ### HTML5
@@ -105,7 +114,14 @@ A collection of helpful programming topics and links
 `<div class="notation"></div>`
 
 #### Semantic HTML
-Semantic HTML is the use of HTML markup to **reinforce the meaning of the information in webpages rather than merely to define its presentation**.
+Describes but doesn't specify the content they enclose. Semantic HTML is the use of HTML markup to **reinforce the meaning of the information in webpages rather than merely to define its presentation**.
+
+##### Examples
+
+```
+<div class="large-text"></div> <!-- bad -->
+<div class="priority-2"></div> <!-- good -->
+```
 
 #### New Elements, Attributes, & APIs
 - `<article>`
@@ -131,13 +147,71 @@ Semantic HTML is the use of HTML markup to **reinforce the meaning of the inform
 ---
 
 ### CSS3
-- ID vs. class
-- Flexbox
-- Define sematic CSS
-- Media Queries
-- Responsive Web Design (RWD)
-- (r)em vs. px vs. %
-- Special selectors
+
+#### Selectors
+
+| Selector               | Description
+|------------------------|------------
+| `#id`                  | Selects the element with `id=""`
+| `.class`               | Selects all elements with `class=""`
+| `*`                    | Selects all elements; never use this
+| `element`              | Selects all _ elements
+| `element,element`      | Selects all _ and _ elements
+| `element element`      | Selects any element that is a descendant
+| `element > element`    | Selects any child element
+| `element + element`    | Selects any element that is the next sibling
+| `element ~ element`    | Selects any following sibling
+| `[attribute]`          | Selects all elements with attribute
+| `[attribute=value`     | Selects all elements with attribute equaling value
+| `[attribute~=value]`   | Selects all elements with attribute containing value
+| `[attribute|=value]`   | Selects all elements with attribute starting with value
+| `[attribte^=value]`    | Selects all elements with attribute beginning with value
+| `[attribute$=value]`   | Selects all elements with attribute ends with value
+| `[attribute*=value]`   | Selects all elements with attribute containing substring value
+| `:active`              |
+| `::after`              |
+| `::before`             |
+| `:checked`             |
+| `:disabled`            |
+| `:empty`               |
+| `:enabled`             |
+| `:first-child`         |
+| `::first-letter`       |
+| `::first-line`         |
+| `:first-of-type`       |
+| `:focus`               |
+| `:hover`               |
+| `:in-range`            |
+| `:invalid`             |
+| `:lang(language)`      |
+| `:last-child`          |
+| `:last-of-type`        |
+| `:link`                |
+| `:not(selector)`       |
+| `:nth-child(n)`        |
+| `:nth-last-child(n)`   |
+| `:nth-last-of-type(n)` |
+| `:nth-of-type(n)`      |
+| `:only-of-type`        |
+| `:only-child`          |
+| `:optional`            | Selects input elements with no `required` attribute
+| `:out-of-range`        | Selects input elements with a value outside of the specified range
+| `:read-only`           | Selects input elements with the `readonly` attribute
+| `:read-write`          | Selects input elements with the `readonly` attribute not specified
+| `:required`            | Selects input elements with the `required` attribute
+| `:root`                | Selects the document's root element
+| `::selection`          | Select the portion of an element that is selected
+| `:target`              |
+| `:valid`               | Selects all input elements with a valid value
+| `:visited`             | Selects all visited links
+
+#### Flexbox
+
+#### Media Queries
+
+#### Responsive Web Design (RWD)
+
+#### (r)em vs. px vs. %
 
 ---
 
@@ -271,6 +345,24 @@ person1.fullName();
 ```
 
 ##### Inheritence & Polymorphism
+```
+// Have John inherit from Person
+John.prototype = Object.create(Person.prototype);
+
+// Reset John's constructor to the correct one
+John.prototype.constructor = John;
+
+// Object.create polyfill
+(function(){
+  if (typeof Object.create !== "function") {
+    Object.create = function(proto){
+      function F(){};
+      F.prototype = proto;
+      return new F();
+    }
+  }
+})();
+```
 
 ##### Namespaces
 Create a **single** global variable (usually an object `{}`) that houses all other application code. For example, `var MyApp = MyApp || {};`. From here, sub-namespaces can be created via `MyApp.store = {};`. The downsides of this are that it's still possible to incur naming collisions in your architecture, and there's no clean way to handle dependency management without some manual effort or third party tools.
@@ -336,14 +428,18 @@ exports.bar = bar;
 Grunt is "configuration over code" whereas Gulp is "code over configuration". Gulp is stream-based. The Gulp API consists of `task`, `watch`, `src`, `pipe`, and `dest`.
 
 #### Angular
-- Modules
-- Directives
-- Factories
-- Karma
+
+##### Modules
+
+##### Directives
+
+##### Factories
 
 #### Ember
 
 #### Backbone
+
+#### Karma
 
 ## Backend
 
