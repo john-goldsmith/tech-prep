@@ -15,9 +15,13 @@ A collection of helpful programming topics and links
   - [CSS3](#css3)
     - [Selectors](#selectors)
     - [Flexbox](#flexbox)
+      - [Resources](#resources)
     - [Media Queries](#media-queries)
+      - [Examples](#examples-1)
+      - [Resources](#resources-1)
     - [Responsive Web Design (RWD)](#responsive-web-design-rwd)
-    - [(r)em vs. px vs. %](#rem-vs-px-vs-%)
+    - [(r)em vs. px vs. vs. pt vs. %](#rem-vs-px-vs-vs-pt-vs-%)
+      - [Resources](#resources-2)
   - [JavaScript](#javascript)
     - [Function Expression vs. Declaration](#function-expression-vs-declaration)
     - [call() vs. apply()](#call-vs-apply)
@@ -27,67 +31,82 @@ A collection of helpful programming topics and links
     - [Self-executing Functions](#self-executing-functions)
     - [Closures](#closures)
       - [Example](#example-2)
-      - [Resources](#resources)
+      - [Resources](#resources-3)
     - [OOP](#oop)
       - [Classes & Instances](#classes--instances)
       - [Inheritence & Polymorphism](#inheritence--polymorphism)
       - [Namespaces](#namespaces)
-      - [Resources](#resources-1)
+      - [Resources](#resources-4)
     - [Node](#node)
-      - [Resources](#resources-2)
+      - [Resources](#resources-5)
     - [Modularity](#modularity)
       - [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
       - [CommonJS (CJS)](#commonjs-cjs)
-      - [Resources](#resources-3)
+      - [Resources](#resources-6)
     - [Grunt vs. Gulp](#grunt-vs-gulp)
     - [Angular](#angular)
       - [Modules](#modules)
+      - [Two-Way Data Binding](#two-way-data-binding)
+      - [Controllers](#controllers)
       - [Directives](#directives)
-      - [Factories](#factories)
-    - [Ember](#ember)
-    - [Backbone](#backbone)
-    - [Karma](#karma)
+      - [Templates](#templates)
+      - [TODO: Routing](#todo-routing)
+      - [Scopes](#scopes)
+      - [Services & Factories](#services--factories)
+      - [Providers](#providers)
+      - [Filters](#filters)
+      - [Resources](#resources-7)
+    - [TODO: Ember](#todo-ember)
+    - [TODO: Backbone](#todo-backbone)
+      - [TODO: Events](#todo-events)
+      - [TODO: Model](#todo-model)
+      - [TODO: Collection](#todo-collection)
+      - [TODO: Router](#todo-router)
+      - [TODO: History](#todo-history)
+      - [TODO: Sync](#todo-sync)
+      - [TODO: View](#todo-view)
+    - [TODO: Karma](#todo-karma)
 - [Backend](#backend)
   - [SQL](#sql)
     - [JOINs](#joins)
-      - [Examples](#examples-1)
+      - [Examples](#examples-2)
         - [Inner Join](#inner-join)
         - [Left Outer Join](#left-outer-join)
         - [Full Outer Join](#full-outer-join)
-      - [Resources](#resources-4)
+      - [Resources](#resources-8)
   - [HTTP & REST](#http--rest)
     - [Verbs](#verbs)
     - [Status Codes](#status-codes)
-    - [Resources](#resources-5)
+    - [Resources](#resources-9)
   - [OOP](#oop-1)
     - [Core Principles](#core-principles)
     - [Single Table Inheritance (STI)](#single-table-inheritance-sti)
-    - [Resources](#resources-6)
+    - [Resources](#resources-10)
   - [Ruby](#ruby)
     - [Rails](#rails)
   - [PHP](#php)
     - [PDO](#pdo)
-    - [Resources](#resources-7)
+    - [Resources](#resources-11)
   - [Java](#java)
-    - [Resources](#resources-8)
+    - [Resources](#resources-12)
 - [Misc](#misc)
   - [Unix Epoch](#unix-epoch)
   - [Duck Typing](#duck-typing)
   - [Regex](#regex)
   - [Sessions](#sessions)
-    - [Resources](#resources-9)
+    - [Resources](#resources-13)
   - [Security](#security)
     - [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf--xsrf)
       - [Example](#example-3)
       - [Countermeasures](#countermeasures)
-      - [Resources](#resources-10)
+      - [Resources](#resources-14)
     - [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
       - [Example](#example-4)
       - [Countermeasures](#countermeasures-1)
-      - [Resources](#resources-11)
+      - [Resources](#resources-15)
     - [CSS Injection](#css-injection)
       - [Example](#example-5)
-      - [Resources](#resources-12)
+      - [Resources](#resources-16)
     - [SQL Injection](#sql-injection)
       - [Example](#example-6)
       - [Countermeasures](#countermeasures-2)
@@ -206,12 +225,50 @@ Describes but doesn't specify the content they enclose. Semantic HTML is the use
 | `:visited`             | Selects all visited links
 
 #### Flexbox
+The CSS3 flexbox is a layout mode providing for the arrangement of elements on a page such that the elements behave predictably when the page layout must accommodate different screen sizes and different display devices. For many applications, the flexible box model provides an improvement over the block model in that it does not use floats, nor do the flex container's margins collapse with the margins of its contents.
+
+![Flex Terms](https://mdn.mozillademos.org/files/3739/flex_terms.png)
+
+##### Resources
+- [http://css-tricks.com/snippets/css/a-guide-to-flexbox/](http://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes)
 
 #### Media Queries
+A media query consists of a media type and at least one expression that limits the style sheets' scope by using media features, such as width, height, and color. Media queries, added in CSS3, let the presentation of content be tailored to a specific range of output devices without having to change the content itself.
+
+##### Examples
+```
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets and up) */
+@media (min-width: 768px) { ... }
+
+/* Medium devices (desktops and up) */
+@media (min-width: 992px) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }
+
+@media (min-width: 700px) and (orientation: landscape) { ... }
+```
+
+##### Resources
+- [https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries)
 
 #### Responsive Web Design (RWD)
 
-#### (r)em vs. px vs. %
+#### (r)em vs. px vs. vs. pt vs. %
+- `em` is a scalable unit that is used in web document media. An em is equal to the current font-size, for instance, if the font-size of the document is 12pt, 1em is equal to 12pt. Ems are scalable in nature, so `2em` would equal `24pt`, `.5em` would equal `6pt`, etc. Ems are becoming increasingly popular in web documents due to scalability and their mobile-device-friendly nature
+- `rem` is only relative to the html (root), whereas `em` is relative to the font size of its direct or nearest parent
+- `px` is fixed-size units that are used in screen media (i.e. to be read on the computer screen). One pixel is equal to one dot on the computer screen (the smallest division of your screen’s resolution). Many web designers use pixel units in web documents in order to produce a pixel-perfect representation of their site as it is rendered in the browser. One problem with the pixel unit is that it does not scale upward for visually-impaired readers or downward to fit mobile devices
+- `pt` is traditionally used in print media (anything that is to be printed on paper, etc.). One point is equal to 1/72 of an inch. Points are much like pixels, in that they are fixed-size units and cannot scale in size
+- `%` is much like the `em` unit, save for a few fundamental differences. First and foremost, the current font-size is equal to `100%` (i.e. `12pt` = `100%`). While using the percent unit, your text remains fully scalable for mobile devices and for accessibility
+
+`body { font-size: 62.5%; }`
+
+##### Resources
+- [http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/](http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/)
 
 ---
 
@@ -430,16 +487,71 @@ Grunt is "configuration over code" whereas Gulp is "code over configuration". Gu
 #### Angular
 
 ##### Modules
+You can think of a module as a container for the different parts of your app – controllers, services, filters, directives, etc.
+
+##### Two-Way Data Binding
+Any changes to the view are immediately reflected in the model, and any changes in the model are propagated to the view.
+
+![Two-Way Data Binding](https://docs.angularjs.org/img/Two_Way_Data_Binding.png)
+
+##### Controllers
+A JavaScript constructor function that is used to augment the scope. Use controllers to:
+
+- Set up the initial state of the $scope object.
+- Add behavior to the $scope object.
+
+Do not use controllers to:
+
+- Manipulate DOM — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
+- Format input — Use angular form controls instead.
+- Filter output — Use angular filters instead.
+- Share code or state across controllers — Use angular services instead.
+- Manage the life-cycle of other components (for example, to create service instances).
 
 ##### Directives
+At a high level, directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element or even transform the DOM element and its children.
 
-##### Factories
+##### Templates
+Templates are written with HTML that contains Angular-specific elements and attributes. Angular combines the template with information from the model and controller to render the dynamic view that a user sees in the browser. Directives, expressions, filters, and form controls can be used.
 
-#### Ember
+##### TODO: Routing
 
-#### Backbone
+##### Scopes
+Scope is the glue between application controller and the view. Scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure which mimic the DOM structure of the application. Scopes can watch expressions and propagate events.
 
-#### Karma
+##### Services & Factories
+Angular services are substitutable objects that are wired together using dependency injection. You can use services to organize and share code across your app. The service factory function generates the single object or function that represents the service to the rest of the application. The object or function returned by the service is injected into any component.
+
+```
+var myModule = angular.module('myModule', []);
+myModule.factory('serviceId', function() {
+  var shinyNewServiceInstance;
+  // factory function body that constructs shinyNewServiceInstance
+  return shinyNewServiceInstance;
+});
+```
+
+##### Providers
+Each web application you build is composed of objects that collaborate to get stuff done. These objects need to be instantiated and wired together for the app to work. In Angular apps most of these objects are instantiated and wired together automatically by the injector service.
+
+##### Filters
+Formats the value of an expression for display to the user. They can be used in view templates, controllers or services and it is easy to define your own filter.
+
+##### Resources
+- [https://docs.angularjs.org/guide](https://docs.angularjs.org/guide)
+
+#### TODO: Ember
+
+#### TODO: Backbone
+##### TODO: Events
+##### TODO: Model
+##### TODO: Collection
+##### TODO: Router
+##### TODO: History
+##### TODO: Sync
+##### TODO: View
+
+#### TODO: Karma
 
 ## Backend
 
