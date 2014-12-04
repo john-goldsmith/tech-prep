@@ -138,8 +138,9 @@ Describes but doesn't specify the content they enclose. Semantic HTML is the use
 ##### Examples
 
 ```
-<div class="large-text"></div> <!-- bad -->
-<div class="priority-2"></div> <!-- good -->
+<div class="large-text"></div> <!-- bad: large relative to what? -->
+<div class="column-left"></div> <!-- bad: what if it changes to be on the right? -->
+<div class="priority-2"></div> <!-- good: like headings -->
 ```
 
 #### New Elements, Attributes, & APIs
