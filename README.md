@@ -23,26 +23,30 @@ A collection of helpful programming topics and links
     - [(r)em vs. px vs. vs. pt vs. %](#rem-vs-px-vs-vs-pt-vs-%)
       - [Resources](#resources-2)
   - [JavaScript](#javascript)
-    - [Function Expression vs. Declaration](#function-expression-vs-declaration)
-    - [call() vs. apply()](#call-vs-apply)
-    - [Undefined vs. null](#undefined-vs-null)
-    - [Assignment & Comparison Operators](#assignment--comparison-operators)
-    - [Types](#types)
-    - [Self-executing Functions](#self-executing-functions)
-    - [Closures](#closures)
-      - [Example](#example-2)
+    - [Publish / Subscribe (Observer)](#publish--subscribe-observer)
+      - [Examples](#examples-2)
       - [Resources](#resources-3)
+- [- http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/](#--httpdevhousetripcom20140915decoupling-javascript-apps-using-pub-sub-pattern)
+  - [Function Expression vs. Declaration](#function-expression-vs-declaration)
+  - [call() vs. apply()](#call-vs-apply)
+  - [Undefined vs. null](#undefined-vs-null)
+  - [Assignment & Comparison Operators](#assignment--comparison-operators)
+  - [Types](#types)
+  - [Self-executing Functions](#self-executing-functions)
+  - [Closures](#closures)
+    - [Example](#example-2)
+    - [Resources](#resources-4)
     - [OOP](#oop)
       - [Classes & Instances](#classes--instances)
       - [Inheritence & Polymorphism](#inheritence--polymorphism)
       - [Namespaces](#namespaces)
-      - [Resources](#resources-4)
-    - [Node](#node)
       - [Resources](#resources-5)
+    - [Node](#node)
+      - [Resources](#resources-6)
     - [Modularity](#modularity)
       - [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
       - [CommonJS (CJS)](#commonjs-cjs)
-      - [Resources](#resources-6)
+      - [Resources](#resources-7)
     - [Grunt vs. Gulp](#grunt-vs-gulp)
     - [Angular](#angular)
       - [Modules](#modules)
@@ -55,7 +59,7 @@ A collection of helpful programming topics and links
       - [Services & Factories](#services--factories)
       - [Providers](#providers)
       - [Filters](#filters)
-      - [Resources](#resources-7)
+      - [Resources](#resources-8)
     - [TODO: Ember](#todo-ember)
     - [TODO: Backbone](#todo-backbone)
       - [TODO: Events](#todo-events)
@@ -69,49 +73,50 @@ A collection of helpful programming topics and links
 - [Backend](#backend)
   - [SQL](#sql)
     - [JOINs](#joins)
-      - [Examples](#examples-2)
+      - [Examples](#examples-3)
         - [Inner Join](#inner-join)
         - [Left Outer Join](#left-outer-join)
         - [Full Outer Join](#full-outer-join)
-      - [Resources](#resources-8)
+      - [Resources](#resources-9)
   - [HTTP & REST](#http--rest)
     - [Verbs](#verbs)
     - [Status Codes](#status-codes)
-    - [Resources](#resources-9)
+    - [Resources](#resources-10)
   - [OOP](#oop-1)
     - [Core Principles](#core-principles)
     - [Single Table Inheritance (STI)](#single-table-inheritance-sti)
-    - [Resources](#resources-10)
+    - [Resources](#resources-11)
   - [Ruby](#ruby)
     - [Rails](#rails)
   - [PHP](#php)
     - [PDO](#pdo)
-    - [Resources](#resources-11)
-  - [Java](#java)
     - [Resources](#resources-12)
+  - [Java](#java)
+    - [Resources](#resources-13)
 - [Misc](#misc)
   - [Unix Epoch](#unix-epoch)
   - [Duck Typing](#duck-typing)
   - [Regex](#regex)
   - [Sessions](#sessions)
-    - [Resources](#resources-13)
+    - [Resources](#resources-14)
   - [Security](#security)
     - [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf--xsrf)
       - [Example](#example-3)
       - [Countermeasures](#countermeasures)
-      - [Resources](#resources-14)
+      - [Resources](#resources-15)
     - [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
       - [Example](#example-4)
       - [Countermeasures](#countermeasures-1)
-      - [Resources](#resources-15)
+      - [Resources](#resources-16)
     - [CSS Injection](#css-injection)
       - [Example](#example-5)
-      - [Resources](#resources-16)
+      - [Resources](#resources-17)
     - [SQL Injection](#sql-injection)
       - [Example](#example-6)
       - [Countermeasures](#countermeasures-2)
     - [Denial of Service (DoS)](#denial-of-service-dos)
   - [Performance & Optimizations](#performance--optimizations)
+- [Articles](#articles)
 - [Books](#books)
 
 <!-- /MarkdownTOC -->
@@ -275,6 +280,37 @@ A media query consists of a media type and at least one expression that limits t
 
 ### JavaScript
 JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
+
+#### Publish / Subscribe (Observer)
+
+##### Examples
+```
+var EventBus = {
+  topics: {},
+
+  subscribe: function(topic, listener) {
+    // create the topic if not yet created
+    if(!this.topics[topic]) this.topics[topic] = [];
+
+    // add the listener
+    this.topics[topic].push(listener);
+  },
+
+  publish: function(topic, data) {
+    // return if the topic doesn't exist, or there are no listeners
+    if(!this.topics[topic] || this.topics[topic].length < 1) return;
+
+    // send the event to all listeners
+    this.topics[topic].forEach(function(listener) {
+      listener(data || {});
+    });
+  }
+};
+```
+
+##### Resources
+- [http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/](http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/)
+-
 
 #### Function Expression vs. Declaration
 `var foo = function(){}` is a function expression defined at run-time. `function bar(){}` is a function declaration defined at parse-time.
@@ -804,6 +840,11 @@ An attempt to make a machine or network resource unavailable to its intended use
 - Minificiation
 - Reduce number of HTTP requests
 - Image sprites
+
+---
+
+## Articles
+- [http://12factor.net](http://12factor.net)
 
 ---
 
