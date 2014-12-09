@@ -26,16 +26,15 @@ A collection of helpful programming topics and links
     - [Publish / Subscribe (Observer)](#publish--subscribe-observer)
       - [Examples](#examples-2)
       - [Resources](#resources-3)
-- [- http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/](#--httpdevhousetripcom20140915decoupling-javascript-apps-using-pub-sub-pattern)
-  - [Function Expression vs. Declaration](#function-expression-vs-declaration)
-  - [call() vs. apply()](#call-vs-apply)
-  - [Undefined vs. null](#undefined-vs-null)
-  - [Assignment & Comparison Operators](#assignment--comparison-operators)
-  - [Types](#types)
-  - [Self-executing Functions](#self-executing-functions)
-  - [Closures](#closures)
-    - [Example](#example-2)
-    - [Resources](#resources-4)
+    - [Function Expression vs. Declaration](#function-expression-vs-declaration)
+    - [call() vs. apply()](#call-vs-apply)
+    - [Undefined vs. null](#undefined-vs-null)
+    - [Assignment & Comparison Operators](#assignment--comparison-operators)
+    - [Types](#types)
+    - [Self-executing Functions](#self-executing-functions)
+    - [Closures](#closures)
+      - [Example](#example-2)
+      - [Resources](#resources-4)
     - [OOP](#oop)
       - [Classes & Instances](#classes--instances)
       - [Inheritence & Polymorphism](#inheritence--polymorphism)
@@ -310,13 +309,13 @@ var EventBus = {
 
 ##### Resources
 - [http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/](http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/)
--
 
 #### Function Expression vs. Declaration
 `var foo = function(){}` is a function expression defined at run-time. `function bar(){}` is a function declaration defined at parse-time.
 
 #### call() vs. apply()
 `Func.call(this, arg1, arg2, ...)`
+
 `Func.apply(this, [arg1, arg2, ...])`
 
 #### Undefined vs. null
