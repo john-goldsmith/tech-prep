@@ -23,6 +23,7 @@ A collection of helpful programming topics and links
     - [(r)em vs. px vs. vs. pt vs. %](#rem-vs-px-vs-vs-pt-vs-%)
       - [Resources](#resources-2)
   - [JavaScript](#javascript)
+    - [proto vs. prototype](#proto-vs-prototype)
     - [Publish / Subscribe (Observer)](#publish--subscribe-observer)
       - [Examples](#examples-2)
       - [Resources](#resources-3)
@@ -279,6 +280,16 @@ A media query consists of a media type and at least one expression that limits t
 
 ### JavaScript
 JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
+
+#### proto vs. prototype
+`__proto__` is the actual object that is used in the lookup chain to resolve methods, etc.  `prototype` is the object that is used to build `__proto__` when you create an object with `new`.
+
+```
+( new Foo ).__proto__ === Foo.prototype
+( new Foo ).prototype === undefined
+```
+
+![JavaScript prototype map](http://i.stack.imgur.com/KFzI3.png)
 
 #### Publish / Subscribe (Observer)
 
