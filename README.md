@@ -27,6 +27,8 @@ A collection of helpful programming topics and links
     - [Publish / Subscribe (Observer)](#publish--subscribe-observer)
       - [Examples](#examples-2)
       - [Resources](#resources-3)
+    - [Promises](#promises)
+      - [Resources](#resources-4)
     - [Function Expression vs. Declaration](#function-expression-vs-declaration)
     - [call() vs. apply()](#call-vs-apply)
     - [Undefined vs. null](#undefined-vs-null)
@@ -35,18 +37,18 @@ A collection of helpful programming topics and links
     - [Self-executing Functions](#self-executing-functions)
     - [Closures](#closures)
       - [Example](#example-2)
-      - [Resources](#resources-4)
+      - [Resources](#resources-5)
     - [OOP](#oop)
       - [Classes & Instances](#classes--instances)
       - [Inheritence & Polymorphism](#inheritence--polymorphism)
       - [Namespaces](#namespaces)
-      - [Resources](#resources-5)
-    - [Node](#node)
       - [Resources](#resources-6)
+    - [Node](#node)
+      - [Resources](#resources-7)
     - [Modularity](#modularity)
       - [Asynchronous Module Definition (AMD)](#asynchronous-module-definition-amd)
       - [CommonJS (CJS)](#commonjs-cjs)
-      - [Resources](#resources-7)
+      - [Resources](#resources-8)
     - [Grunt vs. Gulp](#grunt-vs-gulp)
     - [Angular](#angular)
       - [Modules](#modules)
@@ -59,7 +61,7 @@ A collection of helpful programming topics and links
       - [Services & Factories](#services--factories)
       - [Providers](#providers)
       - [Filters](#filters)
-      - [Resources](#resources-8)
+      - [Resources](#resources-9)
     - [TODO: Ember](#todo-ember)
     - [TODO: Backbone](#todo-backbone)
       - [TODO: Events](#todo-events)
@@ -77,40 +79,40 @@ A collection of helpful programming topics and links
         - [Inner Join](#inner-join)
         - [Left Outer Join](#left-outer-join)
         - [Full Outer Join](#full-outer-join)
-      - [Resources](#resources-9)
+      - [Resources](#resources-10)
   - [HTTP & REST](#http--rest)
     - [Verbs](#verbs)
     - [Status Codes](#status-codes)
-    - [Resources](#resources-10)
+    - [Resources](#resources-11)
   - [OOP](#oop-1)
     - [Core Principles](#core-principles)
     - [Single Table Inheritance (STI)](#single-table-inheritance-sti)
-    - [Resources](#resources-11)
+    - [Resources](#resources-12)
   - [Ruby](#ruby)
     - [Rails](#rails)
   - [PHP](#php)
     - [PDO](#pdo)
-    - [Resources](#resources-12)
-  - [Java](#java)
     - [Resources](#resources-13)
+  - [Java](#java)
+    - [Resources](#resources-14)
 - [Misc](#misc)
   - [Unix Epoch](#unix-epoch)
   - [Duck Typing](#duck-typing)
   - [Regex](#regex)
   - [Sessions](#sessions)
-    - [Resources](#resources-14)
+    - [Resources](#resources-15)
   - [Security](#security)
     - [Cross-site Request Forgery (CSRF / XSRF)](#cross-site-request-forgery-csrf--xsrf)
       - [Example](#example-3)
       - [Countermeasures](#countermeasures)
-      - [Resources](#resources-15)
+      - [Resources](#resources-16)
     - [Cross-site Scripting (XSS)](#cross-site-scripting-xss)
       - [Example](#example-4)
       - [Countermeasures](#countermeasures-1)
-      - [Resources](#resources-16)
+      - [Resources](#resources-17)
     - [CSS Injection](#css-injection)
       - [Example](#example-5)
-      - [Resources](#resources-17)
+      - [Resources](#resources-18)
     - [SQL Injection](#sql-injection)
       - [Example](#example-6)
       - [Countermeasures](#countermeasures-2)
@@ -236,8 +238,8 @@ The CSS3 flexbox is a layout mode providing for the arrangement of elements on a
 ![Flex Terms](https://mdn.mozillademos.org/files/3739/flex_terms.png)
 
 ##### Resources
-- [http://css-tricks.com/snippets/css/a-guide-to-flexbox/](http://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-- [https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes)
+- [CSS Tricks - A Guide to Flexbox](http://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [MDN - Flexible Boxes](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes)
 
 #### Media Queries
 A media query consists of a media type and at least one expression that limits the style sheets' scope by using media features, such as width, height, and color. Media queries, added in CSS3, let the presentation of content be tailored to a specific range of output devices without having to change the content itself.
@@ -260,7 +262,7 @@ A media query consists of a media type and at least one expression that limits t
 ```
 
 ##### Resources
-- [https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries)
+- [MDN - Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries)
 
 #### Responsive Web Design (RWD)
 
@@ -274,7 +276,7 @@ A media query consists of a media type and at least one expression that limits t
 `body { font-size: 62.5%; }`
 
 ##### Resources
-- [http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/](http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/)
+- [CSS Font-Size: em vs. px vs. pt vs. percent](http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/)
 
 ---
 
@@ -282,14 +284,14 @@ A media query consists of a media type and at least one expression that limits t
 JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
 
 #### proto vs. prototype
-`__proto__` is the actual object that is used in the lookup chain to resolve methods, etc.  `prototype` is the object that is used to build `__proto__` when you create an object with `new`.
+`__proto__` is the actual object that is used in the lookup chain to resolve methods, etc. `prototype` is the object that is used to build `__proto__` when you create an object with `new`.
 
 ```
 ( new Foo ).__proto__ === Foo.prototype
 ( new Foo ).prototype === undefined
 ```
 
-![JavaScript prototype map](http://i.stack.imgur.com/KFzI3.png)
+![JavaScript Prototype Map](http://i.stack.imgur.com/KFzI3.png)
 
 #### Publish / Subscribe (Observer)
 
@@ -319,7 +321,19 @@ var EventBus = {
 ```
 
 ##### Resources
-- [http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/](http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/)
+- [Decoupling JavaScript Apps Using Pub/Sub Pattern](http://dev.housetrip.com/2014/09/15/decoupling-javascript-apps-using-pub-sub-pattern/)
+
+#### Promises
+- A promise represents a value that is not yet known
+- A deferred represents work that is not yet finished
+
+![JavaScript Promises](http://www.mediumequalsmessage.com/blog-images/promises.png)
+
+##### Resources
+- [Promise & Deferred objects in JavaScript Pt.1: Theory and Semantics](http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics)
+- [Parse - What's So Great About JavaScript Promises](http://blog.parse.com/2013/01/29/whats-so-great-about-javascript-promises/)
+- [CommonJS Promises/A Proposal](http://wiki.commonjs.org/wiki/Promises/A)
+- [Understand JavaScript Promises](http://openmymind.net/Understanding-Javascript-Promises/)
 
 #### Function Expression vs. Declaration
 `var foo = function(){}` is a function expression defined at run-time. `function bar(){}` is a function declaration defined at parse-time.
@@ -414,10 +428,10 @@ var makeCounter = function () {
 ```
 
 ##### Resources
-- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures)
+- [MDN - Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures)
 
 #### OOP
-Redefining the prototype via `MyObject.prototype = {};` is not recommended so, instead, append to the existing prototype via `MyObject.prototype.foo = function(){};`.
+Redefining the prototype via `MyObject.prototype = {};` is **not** recommended so, instead, append to the existing prototype via `MyObject.prototype.foo = function(){};`.
 
 ##### Classes & Instances
 ```
@@ -472,17 +486,17 @@ John.prototype.constructor = John;
 Create a **single** global variable (usually an object `{}`) that houses all other application code. For example, `var MyApp = MyApp || {};`. From here, sub-namespaces can be created via `MyApp.store = {};`. The downsides of this are that it's still possible to incur naming collisions in your architecture, and there's no clean way to handle dependency management without some manual effort or third party tools.
 
 ##### Resources
-- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
-- [http://javascript.crockford.com/private.html](http://javascript.crockford.com/private.html)
-- [http://javascript.crockford.com/prototypal.html](http://javascript.crockford.com/prototypal.html)
+- [MDN - Introduction to OOP JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)
+- [Crockford - Private Members in JavaScript](http://javascript.crockford.com/private.html)
+- [Crockford - Prototypal Inheritance in JavaScript](http://javascript.crockford.com/prototypal.html)
 
 #### Node
 JavaScript on the server. **Node does I/O in a way that is asynchronous which lets it handle lots of different things simultaneously.** For example, if you go down to a fast food joint and order a cheeseburger they will immediately take your order and then make you wait around until the cheeseburger is ready. In the meantime they can take other orders and start cooking cheeseburgers for other people. Imagine if you had to wait at the register for your cheeseburger, blocking all other people in line from ordering while they cooked your burger! This is called blocking I/O because all I/O (cooking cheeseburgers) happens one at a time. Node, on the other hand, is non-blocking, which means it can cook many cheeseburgers at once.
 
 ##### Resources
-- [https://github.com/maxogden/art-of-node](https://github.com/maxogden/art-of-node)
-- [http://nodeschool.io/](http://nodeschool.io/)
-- [https://github.com/rvagg/learnyounode](https://github.com/rvagg/learnyounode)
+- [GitHub - Art of Node](https://github.com/maxogden/art-of-node)
+- [NodeSchool](http://nodeschool.io/)
+- [GitHub - Learn You Node](https://github.com/rvagg/learnyounode)
 
 #### Modularity
 When an application is modular, it generally means it's composed of a set of highly decoupled, distinct pieces of functionality stored in modules. Loose coupling facilitates easier maintainability of apps by removing dependencies where possible. When this is implemented efficiently, it's quite easy to see how changes to one part of a system may affect another.
@@ -523,9 +537,9 @@ exports.bar = bar;
 ```
 
 ##### Resources
-- [http://addyosmani.com/writing-modular-js/](http://addyosmani.com/writing-modular-js/)
-- [http://requirejs.org/docs/why.html#1](http://requirejs.org/docs/why.html#1)
-- [http://browserify.org/articles.html](http://browserify.org/articles.html)
+- [Writing Modular JavaScript](http://addyosmani.com/writing-modular-js/)
+- [RequireJS - Why?](http://requirejs.org/docs/why.html#1)
+- [Browserify Articles](http://browserify.org/articles.html)
 - [Browserify v2](http://vimeo.com/62988591)
 
 #### Grunt vs. Gulp
@@ -585,7 +599,7 @@ Each web application you build is composed of objects that collaborate to get st
 Formats the value of an expression for display to the user. They can be used in view templates, controllers or services and it is easy to define your own filter.
 
 ##### Resources
-- [https://docs.angularjs.org/guide](https://docs.angularjs.org/guide)
+- [Angular Guide](https://docs.angularjs.org/guide)
 
 #### TODO: Ember
 
@@ -608,7 +622,7 @@ Formats the value of an expression for display to the user. They can be used in 
 An **inner join** of A and B gives the result of A intersect B. An **outer join** of A and B gives the results of A union B.
 
 ##### Examples
-See [http://sqlfiddle.com/#!2/0d1c7/12](http://sqlfiddle.com/#!2/0d1c7/12)
+See this [SQL Fiddle](http://sqlfiddle.com/#!2/0d1c7/12)
 
 Given this schema:
 
@@ -661,7 +675,7 @@ Gives the union of two tables (all the rows from both tables)
 ![SQL Joins](http://i.stack.imgur.com/1UKp7.png)
 
 ##### Resources
-- [http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins](http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins)
+- [SO - Difference Between Inner and Outer Joins](http://stackoverflow.com/questions/38549/difference-between-inner-and-outer-joins)
 
 ---
 
@@ -687,9 +701,9 @@ Gives the union of two tables (all the rows from both tables)
 | 5xx         | Server error
 
 #### Resources
-- [http://restcookbook.com/](http://restcookbook.com/)
-- [http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions](http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions)
-- [http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
+- [REST Cookbook](http://restcookbook.com/)
+- [RoR - CRUD Verbs and Actions](http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions)
+- [Wikipedia - HTTP Request Methods](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 
 ---
 
@@ -723,15 +737,15 @@ STI is the idea of using a single table to reflect multiple models that inherit 
 #### PDO
 
 #### Resources
-- [https://phpbestpractices.org/](https://phpbestpractices.org/)
-- [http://www.phptherightway.com/](http://www.phptherightway.com/)
+- [PHP Best Practices](https://phpbestpractices.org/)
+- [PHP The Right Way](http://www.phptherightway.com/)
 
 ---
 
 ### Java
 
 #### Resources
-- [https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html)
+- [Oracle - Java Nuts and Bolts](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html)
 
 ## Misc
 
@@ -780,8 +794,8 @@ Duck typing is only concerned with ensuring that objects behave as demanded of t
 HTTP is a stateless protocol. Sessions make it stateful.
 
 #### Resources
-- [http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/](http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/)
-- [http://guides.rubyonrails.org/security.html#sessions](http://guides.rubyonrails.org/security.html#sessions)
+- [How Does a Web Session Work?](http://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/)
+- [RoR - Sessions](http://guides.rubyonrails.org/security.html#sessions)
 
 ---
 
@@ -798,7 +812,7 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 - Embed additional authentication data -- such as a synchronizer token -- into requests that allows the web application to detect requests from unauthorized locations
 
 ##### Resources
-- [http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf](http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf)
+- [RoR - CSRF](http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf)
 
 #### Cross-site Scripting (XSS)
 **The most common entry points are just about everywhere where the user can input data or any URL parameter. An attacker injects some code, the web application saves it and displays it on a page, later presented to a victim.** XSS can steal the cookie, hijack the session, redirect the victim to a fake website, display advertisements for the benefit of the attacker, change elements on the web site to get confidential information or install malicious software through security holes in the web browser.
@@ -810,7 +824,7 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 **Escaping user input is essential.** It is very important to filter malicious input, but it is also important to escape the output of the web application. Whitelist filtering states the values allowed as opposed to the values not allowed. Blacklists are never complete
 
 ##### Resources
-- [http://guides.rubyonrails.org/security.html#cross-site-scripting-xss](http://guides.rubyonrails.org/security.html#cross-site-scripting-xss)
+- [RoR - XSS](http://guides.rubyonrails.org/security.html#cross-site-scripting-xss)
 
 #### CSS Injection
 **CSS injection is actually JavaScript injection**, because some browsers (IE, some versions of Safari and others) allow JavaScript in CSS. Think twice about allowing custom CSS in your web application.
@@ -819,7 +833,7 @@ XSRF attacks works by including a link or script in a page that accesses a site 
 `<div style="background:url('javascript:alert(1)')">`
 
 ##### Resources
-- [http://guides.rubyonrails.org/security.html#css-injection](http://guides.rubyonrails.org/security.html#css-injection)
+- [RoR - CSS Injection](http://guides.rubyonrails.org/security.html#css-injection)
 
 #### SQL Injection
 SQL injection attacks aim at **influencing database queries by manipulating web application parameters**.
@@ -854,7 +868,7 @@ An attempt to make a machine or network resource unavailable to its intended use
 ---
 
 ## Articles
-- [http://12factor.net](http://12factor.net)
+- [The Twelve Factor App](http://12factor.net)
 
 ---
 
