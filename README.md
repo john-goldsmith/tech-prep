@@ -331,7 +331,11 @@ var EventBus = {
 
 ##### Resources
 - [Promise & Deferred objects in JavaScript Pt.1: Theory and Semantics](http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics)
+- [Flattening Promise Chains](http://solutionoptimist.com/2013/12/27/javascript-promise-chains-2/)
 - [Promises In Detail](http://dailyjs.com/2014/02/20/promises-in-detail/)
+- [Q](http://documentup.com/kriskowal/q/)
+- [Q's Design Implementation](https://github.com/kriskowal/q/blob/v1/design/README.js)
+- [Bluebird](https://github.com/petkaantonov/bluebird)
 - [Parse - What's So Great About JavaScript Promises](http://blog.parse.com/2013/01/29/whats-so-great-about-javascript-promises/)
 - [CommonJS Promises/A Proposal](http://wiki.commonjs.org/wiki/Promises/A)
 - [Understand JavaScript Promises](http://openmymind.net/Understanding-Javascript-Promises/)
