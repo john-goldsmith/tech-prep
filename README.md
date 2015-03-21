@@ -23,6 +23,7 @@ A collection of helpful programming topics and links
     - [(r)em vs. px vs. vs. pt vs. %](#rem-vs-px-vs-vs-pt-vs-%)
       - [Resources](#resources-2)
   - [JavaScript](#javascript)
+    - [Fizz Buzz](#fizz-buzz)
     - [ES6 Features](#es6-features)
     - [proto vs. prototype](#proto-vs-prototype)
     - [Publish / Subscribe (Observer)](#publish--subscribe-observer)
@@ -283,6 +284,21 @@ A media query consists of a media type and at least one expression that limits t
 
 ### JavaScript
 JavaScript is a prototype-based language in which classes are not present, and behavior reuse (known as inheritance in class-based languages) is accomplished through a process of decorating existing objects which serve as prototypes.
+
+#### Fizz Buzz
+```
+for (var i = 1; i <= 100; i++) {
+  if (i % 15 === 0) {
+      console.log('FizzBuzz');
+  } else if (i % 3 === 0) {
+      console.log('Fizz');
+  } else if (i % 5 === 0) {
+      console.log('Buzz');
+  } else {
+      console.log(i);
+  }
+}
+```
 
 #### ES6 Features
 - `let`
